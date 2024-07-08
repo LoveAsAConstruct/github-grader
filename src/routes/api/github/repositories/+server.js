@@ -13,7 +13,7 @@ export async function GET({ cookies }) {
     const octokit = new Octokit({ auth: token });
     const { data: repos } = await octokit.rest.repos.listForAuthenticatedUser({
       sort: 'updated',
-      per_page: 10,
+      per_page: 30,
     });
 
     return json(repos);
