@@ -1,8 +1,8 @@
 <!-- src/routes/dashboard/+page.svelte -->
 <script>
-    import Repo from '$lib/Repo.svelte';
+    import Repo from '$lib/components/Repo.svelte';
     import { onMount } from 'svelte';
-
+    import DailyActivityWheel from '$lib/components/DailyActivityWheel.svelte';
     let repositories = [];
 
     onMount(async () => {
@@ -12,19 +12,24 @@
         }
     });
 </script>
-
+<DailyActivityWheel></DailyActivityWheel>
 <h1>Your GitHub Repositories</h1>
 
 <div class="repo-grid">
     {#each repositories as repo}
-      <Repo title={repo.name} description={repo.description} />
+        <Repo 
+            title={repo.name} 
+            description={repo.description} 
+            commits={repo.commits_count} 
+            size={repo.size} 
+        />
     {/each}
   </div>
   
   <style>
     .repo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
       gap: 20px;
       padding: 0px;
     }

@@ -45,11 +45,13 @@
     nav a {
         text-decoration: none;
         color: #F3F3F4;
+        font-size: large;
     }
     nav button {
         background-color: transparent;
         border: none;
         color: #F3F3F4;
+        font-size: large;
     }
     main {
         padding: 20px;
