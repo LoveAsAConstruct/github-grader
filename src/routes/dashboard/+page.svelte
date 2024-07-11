@@ -1,6 +1,7 @@
 <!-- src/routes/dashboard/+page.svelte -->
 <script>
     import Repo from '$lib/components/Repo.svelte';
+    import Ring from '../../lib/components/Ring.svelte';
     import { onMount } from 'svelte';
     import DailyActivityWheel from '$lib/components/DailyActivityWheel.svelte';
     let repositories = [];
@@ -13,6 +14,7 @@
     });
 </script>
 <DailyActivityWheel></DailyActivityWheel>
+
 <h1>Your GitHub Repositories</h1>
 
 <div class="repo-grid">

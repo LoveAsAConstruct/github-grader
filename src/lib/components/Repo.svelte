@@ -20,7 +20,7 @@
 <style>
     .repo-container {
         border-radius: 15px;
-        background-color: #D9C5B2;
+        background-color: #9FB8AD;
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -39,12 +39,12 @@
         font-weight: bold;
         font-size: 1.2em;
         margin: 0 0 10px 0;
-        color: #44342E;
+        color: #3F403F;
     }
 
     .description {
         font-size: 0.9em;
-        color: #5E4B44;
+        color: #475841;
         margin-bottom: 15px;
         flex-grow: 1;
         overflow: hidden;
@@ -58,11 +58,11 @@
         display: flex;
         justify-content: space-between;
         font-size: 0.8em;
-        color: #7A6157;
+        color: #9FB8AD;
     }
 
     .commits, .size {
-        background-color: #EAE0D6;
+        background-color: #475841;
         padding: 5px 10px;
         border-radius: 10px;
     }

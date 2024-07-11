@@ -38,19 +38,19 @@
 
 <style>
     nav {
-        background-color: #14110F;
-        color: #F3F3F4;
+        background-color: #3F403F;
+        color: #9FB8AD;
         padding: 10px;
     }
     nav a {
         text-decoration: none;
-        color: #F3F3F4;
+        color: #9FB8AD;
         font-size: large;
     }
     nav button {
         background-color: transparent;
         border: none;
-        color: #F3F3F4;
+        color: #9FB8AD;
         font-size: large;
     }
     main {

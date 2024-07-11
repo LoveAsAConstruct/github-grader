@@ -13,9 +13,12 @@ export async function GET({ cookies }) {
     const octokit = new Octokit({ auth: token });
     const today = new Date().toISOString().split('T')[0];
 
-    // Get user's commits for today
+    // First, get the authenticated user's information
+    const { data: user } = await octokit.rest.users.getAuthenticated();
+
+    // Now use the user's login in the commit search
     const { data: commits } = await octokit.rest.search.commits({
-      q: `author-date:${today} author:${octokit.rest.users.getAuthenticated().data.login}`,
+      q: `author-date:${today} author:${user.login}`,
       sort: 'author-date',
       order: 'desc',
       per_page: 100
@@ -46,6 +49,6 @@ export async function GET({ cookies }) {
     });
   } catch (error) {
     console.error('Error fetching daily activity:', error);
-    return new Response(null, { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
 }
