@@ -6,6 +6,7 @@ export async function GET({ cookies }) {
   const token = cookies.get('github_token');
 
   if (!token) {
+    console.log('No GitHub token found in cookies');
     return new Response(null, { status: 401 });
   }
 
@@ -13,16 +14,19 @@ export async function GET({ cookies }) {
     const octokit = new Octokit({ auth: token });
     const today = new Date().toISOString().split('T')[0];
 
-    // First, get the authenticated user's information
+    // Get the authenticated user's information
     const { data: user } = await octokit.rest.users.getAuthenticated();
+    console.log('Authenticated user:', user.login);
 
-    // Now use the user's login in the commit search
+    // Search for today's commits
     const { data: commits } = await octokit.rest.search.commits({
       q: `author-date:${today} author:${user.login}`,
       sort: 'author-date',
       order: 'desc',
       per_page: 100
     });
+
+    console.log('Commits found:', commits.total_count);
 
     let totalCommits = commits.total_count;
     let totalLinesAdded = 0;
@@ -41,6 +45,10 @@ export async function GET({ cookies }) {
       totalLinesRemoved += commitData.stats.deletions;
       totalFileSize += commitData.files.reduce((sum, file) => sum + file.changes, 0);
     }
+
+    console.log('Total lines added:', totalLinesAdded);
+    console.log('Total lines removed:', totalLinesRemoved);
+    console.log('Total file size changes:', totalFileSize);
 
     return json({
       commits: totalCommits,
