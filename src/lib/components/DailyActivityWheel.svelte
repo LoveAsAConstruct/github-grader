@@ -41,15 +41,15 @@
       backgroundColor="#f0f0f0"
       showBackground={true}
       layers={[
-        { startColor: "#256EFF", endColor: "#8E3FB3", progress: commitProgress },
-        { startColor: "#F61067", endColor: "#9A767F", progress: linesProgress },
+        { startColor: "#256EFF", endColor: "#99BBFF", progress: commitProgress },
+        { startColor: "#F61067", endColor: "#FB89B5", progress: linesProgress },
         { startColor: "#3DDC97", endColor: "#4FDFA0", progress: fileSizeProgress }
       ]}
     />
     <div class="stats">
-      <p><span style="color: #ff6b6b;">●</span> Commits: {dailyActivity.commits}</p>
-      <p><span style="color: #4ecdc4;">●</span> Lines of Code: {dailyActivity.linesOfCode}</p>
-      <p><span style="color: #45b7d1;">●</span> File Size Changes: {dailyActivity.fileSize} bytes</p>
+      <p><span style="color: #256EFF;">●</span> Commits: {dailyActivity.commits}</p>
+      <p><span style="color: #F61067;">●</span> Lines of Code: {dailyActivity.linesOfCode}</p>
+      <p><span style="color: #3DDC97;">●</span> File Size Changes: {dailyActivity.fileSize} bytes</p>
     </div>
   </div>
 {/if}
