@@ -1,7 +1,7 @@
 <!-- DailyActivityWheel.svelte -->
 <script>
   import { onMount } from 'svelte';
-  import ActivityWheel from '$lib/components/Ring.svelte';
+  import Ring from '$lib/components/Ring.svelte';
 
   let dailyActivity = { commits: 0, linesOfCode: 0, fileSize: 0 };
   let loading = true;
@@ -35,7 +35,7 @@
   <p>Error: {error}</p>
 {:else}
   <div class="daily-activity">
-    <ActivityWheel
+    <Ring
       size={250}
       strokeWidth={20}
       backgroundColor="#f0f0f0"
@@ -55,6 +55,11 @@
 {/if}
 
 <style>
+  .daily-activity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .stats {
     margin-top: 20px;

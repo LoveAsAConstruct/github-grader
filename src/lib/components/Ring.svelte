@@ -1,12 +1,13 @@
+<!-- Ring.svelte -->
 <script>
-  export let size = 200;
-  export let strokeWidth = 10;
-  export let backgroundColor = "#e0e0e0";
+  export let size = 250;
+  export let strokeWidth = 20;
+  export let backgroundColor = "#f0f0f0";
   export let showBackground = true;
   export let layers = [
-    { startColor: "#ff5e57", endColor: "#ff3131", progress: 75 },
-    { startColor: "#5ee2ff", endColor: "#00b8ff", progress: 50 },
-    { startColor: "#9eff5e", endColor: "#31ff31", progress: 25 }
+    { startColor: "#256EFF", endColor: "#99BBFF", progress: 75 },
+    { startColor: "#F61067", endColor: "#FB89B5", progress: 50 },
+    { startColor: "#3DDC97", endColor: "#4FDFA0", progress: 25 }
   ];
 
   $: radius = size / 2;
@@ -40,18 +41,18 @@
       {/each}
     </defs>
     
-    {#if showBackground}
-      <circle
-        stroke={backgroundColor}
-        fill="transparent"
-        stroke-width={strokeWidth}
-        r={normalizedRadius}
-        cx={radius}
-        cy={radius}
-      />
-    {/if}
-    
     {#each layers as layer, i}
+      {#if showBackground}
+        <circle
+          stroke={backgroundColor}
+          fill="transparent"
+          stroke-width={strokeWidth}
+          r={normalizedRadius - (i * (strokeWidth + 2))}
+          cx={radius}
+          cy={radius}
+        />
+      {/if}
+      
       <circle
         class="progress-ring"
         stroke="url(#gradient-{i})"
